@@ -12,7 +12,7 @@ sns.set()
 
 if __name__ == '__main__':
     # Matplotlib에서 나눔 폰트 사용 설정
-    plt.rc('font', family='NanumGothic')
+    plt.rc('font', family='AppleGothic')
 
     df = pd.read_csv(
         './content/공군_신체정보_남녀혼합.csv', encoding='cp949')

@@ -6,7 +6,7 @@ from sklearn.naive_bayes import GaussianNB
 
 def run(df):
     # Matplotlib에서 나눔 폰트 사용 설정
-    plt.rc('font', family='NanumGothic')
+    plt.rc('font', family='AppleGothic')
 
     # 데이터 준비
     X = df[['키', '몸무게']].values
