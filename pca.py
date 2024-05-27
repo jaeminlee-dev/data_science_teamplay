@@ -26,4 +26,5 @@ if __name__ == '__main__':
     plt.rc('font', family='AppleGothic')
     df = pd.read_csv(
         './content/공군_신체정보_남녀혼합.csv', encoding='cp949')
+    run(df)
     pass
