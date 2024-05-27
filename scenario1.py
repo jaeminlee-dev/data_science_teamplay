@@ -6,5 +6,5 @@ import naive as naive
 import pca as pca
 
 def run(df):
-    pca.run(df)
+    pca.run(df, )
     pass

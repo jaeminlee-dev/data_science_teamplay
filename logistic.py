@@ -4,20 +4,22 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 
 
-def run(df, type='키'):
+def run(df, type='몸무게'):
     남자 = df[df['성별'] == '남']
     여자 = df[df['성별'] == '여']
+
+    # 남자 필터링된 데이터와 여자 필터링된 데이터를 합친다.
     x = np.concatenate((남자[type].values, 여자[type].values))
     X = x.reshape(-1, 1)
+    # 남자는 0, 여자는 1로 레이블링
     y = np.concatenate((np.zeros(남자.shape[0]), np.ones(여자.shape[0])))
-
     clf = LogisticRegression(solver='lbfgs').fit(X, y)
     show(clf)
 
 
 def show(clf):
     # TODO: 데이터의 형식에 따라 맞춤형으로 x값 설정
-    x = np.arange(140, 200, 1)
+    x = np.arange(1, 200, 1)
     y_male = clf.predict_proba(x.reshape(-1, 1))[:, 0]
     y_female = clf.predict_proba(x.reshape(-1, 1))[:, 1]
 
