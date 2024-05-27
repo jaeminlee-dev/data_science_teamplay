@@ -1,10 +1,12 @@
 from matplotlib import pyplot as plt
 import numpy as np
+import pandas as pd
 from sklearn.decomposition import PCA
 
 
-def run(df_man):
-    
+def run(df, sex='남'):
+    df_man = df[df['성별'] == sex]
+
     df_man = df_man.drop(['성별', '측정일자'], axis=1)
 
     남자키몸무게 = df_man[['키', '몸무게']].values.reshape(-1, 2)
@@ -19,3 +21,9 @@ def run(df_man):
     plt.xlabel('PCA Component 1')
     plt.yticks([])  # Y축 값 숨기기
     plt.show()
+
+if __name__ == '__main__':
+    plt.rc('font', family='AppleGothic')
+    df = pd.read_csv(
+        './content/공군_신체정보_남녀혼합.csv', encoding='cp949')
+    pass

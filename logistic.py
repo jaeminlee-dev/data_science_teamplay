@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # 데이터 불러오기
+
+
 def run(df):
     남자 = df[df['성별'] == '남']
     여자 = df[df['성별'] == '여']
@@ -38,3 +40,10 @@ def run(df):
     plt.ylabel(r'$\sigma(z)$')
     plt.legend()
     plt.show()
+
+
+if __name__ == '__main__':
+    plt.rc('font', family='AppleGothic')
+    df = pd.read_csv(
+        './content/공군_신체정보_남녀혼합.csv', encoding='cp949')
+    pass
