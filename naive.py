@@ -6,19 +6,16 @@ import seaborn as sns
 sns.set()
 
 
-def run(df):
-    # Matplotlib에서 나눔 폰트 사용 설정
-    plt.rc('font', family='AppleGothic')
-
-    # 데이터 준비
-    X = df[['키', '몸무게']].values
-    y = df['성별'].apply(lambda x: 0 if x == '남' else 1).values
-
-    # 가우시안 모델로 핏
+def run(df, sex='남', types=['키', '몸무게']):
+    X = df[types].values
+    y = df['성별'].apply(lambda x: 0 if x == sex else 1).values
     가우시안 = GaussianNB()
     가우시안.fit(X, y)
+    show(가우시안, X, y)
 
-    # 새로운 데이터들 잔뜩 만들고 가우시안에 적용
+
+def show(가우시안, X, y):
+    # 시각화
     rng = np.random.RandomState(0)
     Xnew = np.array([[rng.uniform(X[:, 0].min(), X[:, 0].max()),
                     rng.uniform(X[:, 1].min(), X[:, 1].max())] for _ in range(2000)])

@@ -1,44 +1,33 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
 
-# 데이터 불러오기
 
-
-def run(df):
+def run(df, type='키'):
     남자 = df[df['성별'] == '남']
     여자 = df[df['성별'] == '여']
+    x = np.concatenate((남자[type].values, 여자[type].values))
+    X = x.reshape(-1, 1)
+    y = np.concatenate((np.zeros(남자.shape[0]), np.ones(여자.shape[0])))
 
-    키_남자 = 남자['키']
-    키_여자 = 여자['키']
+    clf = LogisticRegression(solver='lbfgs').fit(X, y)
+    show(clf)
 
-    # 레이블 생성
-    레이블_남자 = np.zeros_like(키_남자)
-    레이블_여자 = np.ones_like(키_여자)
 
-    # 매개변수 정의
-    바이어스 = -25  # 시그모이드 곡선을 이동시키는 바이어스
-    가중치 = 0.15  # 시그모이드 곡선을 스케일링하는 가중치
+def show(clf):
+    # TODO: 데이터의 형식에 따라 맞춤형으로 x값 설정
+    x = np.arange(140, 200, 1)
+    y_male = clf.predict_proba(x.reshape(-1, 1))[:, 0]
+    y_female = clf.predict_proba(x.reshape(-1, 1))[:, 1]
 
-    def 시그모이드(입력값):
-        # z는 입력값의 선형 함수
-        z = 가중치 * 입력값 + 바이어스
-        return 1 / (1 + np.exp(-z))
-
-    # 키 범위 내에서 일정 간격으로 값 생성
-    입력_값들 = np.linspace(150, 190, 300)
-
-    # 입력 값들에 대한 시그모이드 값 계산
-    시그모이드_값들 = 시그모이드(입력_값들)
-
-    # 플로팅
-    plt.plot(키_남자, 레이블_남자, 'o', label='남자')
-    plt.plot(키_여자, 레이블_여자, 'o', label='여자')
-    plt.plot(입력_값들, 시그모이드_값들, color='red', label='시그모이드 함수')
-
-    plt.xlabel('키')
-    plt.ylabel(r'$\sigma(z)$')
+    # 그래프 그리기
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, y_male * 100, label='남자일 확률', color='blue')
+    plt.plot(x, y_female * 100, label='여자일 확률', color='red')
+    plt.title('로지스틱 회귀 분석')
     plt.legend()
+    plt.grid(True)
     plt.show()
 
 
