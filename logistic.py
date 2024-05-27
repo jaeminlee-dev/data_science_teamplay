@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 # 데이터 불러오기
 def run(df):
-    # 성별에 따라 데이터 분리
     남자 = df[df['성별'] == '남']
     여자 = df[df['성별'] == '여']
 
