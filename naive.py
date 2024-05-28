@@ -21,7 +21,8 @@ def run_with_lda(lda_data1, lda_data2, target, types1, types2):
     y = target
     가우시안 = GaussianNB()
     가우시안.fit(X, y)
-    show(가우시안, X, y, x_label=f'{types1} LDA Component 1', y_label=f'{types2}LDA Component 2', title='Naïve Bayes LDA')
+    show(가우시안, X, y, x_label=f'{types1} LDA Component 1', y_label=f'{
+         types2}LDA Component 2', title='Naïve Bayes LDA')
 
 
 def show(가우시안, X, y, x_label='키 (cm)', y_label='몸무게 (kg)', title='Naïve Bayes'):

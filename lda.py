@@ -27,8 +27,8 @@ def show(lda_data, target):
 
     plt.legend(loc='upper right')
     plt.xlabel('lda_component_1')
-    # plt.ylabel('lda_component_2')
-    plt.show()
+    plt.ylabel('lda_component_2')
+    # plt.show()
 
 
 if __name__ == '__main__':
