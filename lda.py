@@ -11,7 +11,9 @@ def run(df, types=['키', '몸무게']):
     lda = LinearDiscriminantAnalysis(n_components=1)
     lda.fit(scaled, target)
     lda_data = lda.transform(scaled)
-    show(lda_data, target)
+
+    return lda_data
+    #show(lda_data, target)
 
 
 def show(lda_data, target):
