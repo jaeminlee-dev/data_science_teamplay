@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.linear_model import LogisticRegression
 
 
@@ -17,18 +19,35 @@ def run(df, type='몸무게'):
     show(clf, title=f'{type} 로지스틱 회귀 분석')
 
 
-def run_with_pca(man_pcaed_data, woman_pcaed_data, types):
+def run_with_pca(pcaed_data, shape1, shape2, types):
     # 남자 필터링된 데이터와 여자 필터링된 데이터를 합친다.
-    man_pcaed_data = man_pcaed_data.reshape(1, -1)[0]
-    woman_pcaed_data = woman_pcaed_data.reshape(1, -1)[0]
 
-    x = np.concatenate((man_pcaed_data, woman_pcaed_data))
-    X = x.reshape(-1, 1)
+    x = pcaed_data
+    y = np.concatenate((np.zeros(shape1), np.ones(shape2)))
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)   
+
     # 남자는 0, 여자는 1로 레이블링
-    y = np.concatenate(
-        (np.zeros(man_pcaed_data.shape[0]), np.ones(woman_pcaed_data.shape[0])))
-    clf = LogisticRegression(solver='lbfgs').fit(X, y)
-    show(clf, title=f'{types} 로지스틱 회귀 분석 (PCA)')
+    clf = LogisticRegression(solver='lbfgs').fit(x_train, y_train)
+    clf.fit(x_train, y_train)
+
+    # 예측 및 평가
+    y_pred = clf.predict(x_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f'{types} 모델 정확도: {accuracy}')
+    #print(classification_report(y_test, y_pred))
+
+    # 예측 확률 시각화
+    # probabilities = clf.predict_proba(x_test)
+    # plt.figure(figsize=(10, 6))
+    # plt.scatter(range(len(y_test)), probabilities[:, 1], color='red', label='여자일 확률')
+    # plt.scatter(range(len(y_test)), probabilities[:, 0], color='blue', label='남자일 확률')
+    # plt.axhline(y=0.5, color='red', linestyle='--', label='결정 경계')
+    # plt.title('로지스틱 회귀 분석 (PCA 주성분 점수 사용)')
+    # plt.xlabel('샘플 인덱스')
+    # plt.ylabel('여자일 확률')
+    # plt.legend()
+    # plt.show()
+    #show(clf, title=f'{types} 로지스틱 회귀 분석 (PCA)')
 
 
 def show(clf, title='로지스틱 회귀 분석'):

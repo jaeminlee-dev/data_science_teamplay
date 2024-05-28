@@ -9,10 +9,30 @@ import pandas as pd
 
 
 def run(df):
-    types = ['키', '몸무게']
-    man_pcaed_data = pca.run(df, '남', types)
-    woman_pcaed_data = pca.run(df, '여', types)
-    logistic.run_with_pca(man_pcaed_data, woman_pcaed_data, types)
+    typesList = []
+    typesList.append(['키', '몸무게', '허리둘레(윗허리)', '어깨가쪽사이길이', '머리둘레', '목둘레', '희망치수신발'])
+    typesList.append(['키', '몸무게', '허리둘레(윗허리)', '머리둘레', '목둘레', '희망치수신발'])
+    typesList.append(['키', '몸무게', '허리둘레(윗허리)', '희망치수신발'])
+    typesList.append(['허리둘레(윗허리)', '몸무게', '어깨가쪽사이길이', '희망치수신발'])
+    typesList.append(['허리둘레(윗허리)', '키', '어깨가쪽사이길이', '희망치수신발'])
+    typesList.append(['키', '허리둘레(윗허리)', '희망치수신발'])
+    typesList.append(['몸무게', '허리둘레(윗허리)', '희망치수신발'])
+    typesList.append(['키', '몸무게', '머리둘레', '목둘레', '희망치수신발'])
+    typesList.append(['머리둘레', '목둘레'])
+    typesList.append(['머리둘레', '허리둘레(윗허리)'])
+    typesList.append(['희망치수신발'])
+    typesList.append(['키', '몸무게', '희망치수신발'])
+    typesList.append(['키', '몸무게'])
+    typesList.append(['키'])
+    #types = ['키', '몸무게']
+    #types = ['키']
+    
+    for types in typesList:
+        pcaed_data = pca.run(df, types)
+        남자 = df[df['성별'] == '남']
+        여자 = df[df['성별'] == '여']
+        logistic.run_with_pca(pcaed_data, 남자.shape[0], 여자.shape[0], types)
+    # logistic.run_with_pca(man_pcaed_data, woman_pcaed_data, types)
 
 
 if __name__ == '__main__':

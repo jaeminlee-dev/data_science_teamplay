@@ -4,12 +4,19 @@ import pandas as pd
 from sklearn.decomposition import PCA
 
 
-def run(df, sex='남', types=['키', '몸무게']):
+def run(df, sex='남', types=['키','희망치수신발']):
     df_filtered_sex = df[df['성별'] == sex]
-    df_reshaped = df_filtered_sex[types].values.reshape(-1, 2)
+    df_reshaped = df_filtered_sex[types].values.reshape(-1, len(types))
     pca = PCA(n_components=1)
     pca_data = pca.fit_transform(df_reshaped)
     #show(pca_data)
+    return pca_data
+
+def run(df, types=['키','희망치수신발']):
+    df_reshaped = df[types].values.reshape(-1, len(types))
+    pca = PCA(n_components=1)
+    pca_data = pca.fit_transform(df_reshaped)
+    # show(pca_data)
     return pca_data
 
 def show(pca_data):
