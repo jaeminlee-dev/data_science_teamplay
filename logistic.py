@@ -14,26 +14,26 @@ def run(df, type='몸무게'):
     # 남자는 0, 여자는 1로 레이블링
     y = np.concatenate((np.zeros(남자.shape[0]), np.ones(여자.shape[0])))
     clf = LogisticRegression(solver='lbfgs').fit(X, y)
-    show(clf)
+    show(clf, title=f'{type} 로지스틱 회귀 분석')
 
 
 def run_with_pca(man_pcaed_data, woman_pcaed_data, types):
     # 남자 필터링된 데이터와 여자 필터링된 데이터를 합친다.
-    man_pcaed_data = man_pcaed_data.reshape(1, -1)
-    woman_pcaed_data = woman_pcaed_data.reshape(1, -1)
+    man_pcaed_data = man_pcaed_data.reshape(1, -1)[0]
+    woman_pcaed_data = woman_pcaed_data.reshape(1, -1)[0]
 
     x = np.concatenate((man_pcaed_data, woman_pcaed_data))
     X = x.reshape(-1, 1)
     # 남자는 0, 여자는 1로 레이블링
     y = y = np.concatenate(
-        (np.zeros(man_pcaed_data), np.ones(woman_pcaed_data)))
+        (np.zeros(man_pcaed_data.shape[0]), np.ones(woman_pcaed_data.shape[0])))
     clf = LogisticRegression(solver='lbfgs').fit(X, y)
-    show(clf, title=f'{types} 로지스틱 회귀 분석')
+    show(clf, title=f'{types} 로지스틱 회귀 분석 (PCA)')
 
 
 def show(clf, title='로지스틱 회귀 분석'):
     # TODO: 데이터의 형식에 따라 맞춤형으로 x값 설정
-    x = np.arange(1, 200, 1)
+    x = np.arange(-2000, 2000, 1)
     y_male = clf.predict_proba(x.reshape(-1, 1))[:, 0]
     y_female = clf.predict_proba(x.reshape(-1, 1))[:, 1]
 
