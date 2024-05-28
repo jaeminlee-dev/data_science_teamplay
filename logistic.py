@@ -17,7 +17,21 @@ def run(df, type='몸무게'):
     show(clf)
 
 
-def show(clf):
+def run_with_pca(man_pcaed_data, woman_pcaed_data, types):
+    # 남자 필터링된 데이터와 여자 필터링된 데이터를 합친다.
+    man_pcaed_data = man_pcaed_data.reshape(1, -1)
+    woman_pcaed_data = woman_pcaed_data.reshape(1, -1)
+
+    x = np.concatenate((man_pcaed_data, woman_pcaed_data))
+    X = x.reshape(-1, 1)
+    # 남자는 0, 여자는 1로 레이블링
+    y = y = np.concatenate(
+        (np.zeros(man_pcaed_data), np.ones(woman_pcaed_data)))
+    clf = LogisticRegression(solver='lbfgs').fit(X, y)
+    show(clf, title=f'{types} 로지스틱 회귀 분석')
+
+
+def show(clf, title='로지스틱 회귀 분석'):
     # TODO: 데이터의 형식에 따라 맞춤형으로 x값 설정
     x = np.arange(1, 200, 1)
     y_male = clf.predict_proba(x.reshape(-1, 1))[:, 0]

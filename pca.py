@@ -9,7 +9,7 @@ def run(df, sex='남', types=['키', '몸무게']):
     df_reshaped = df_filtered_sex[types].values.reshape(-1, 2)
     pca = PCA(n_components=1)
     pca_data = pca.fit_transform(df_reshaped)
-    show(pca_data)
+    #show(pca_data)
     return pca_data
 
 def show(pca_data):

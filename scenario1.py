@@ -4,7 +4,17 @@
 import logistic as logistic
 import naive as naive
 import pca as pca
+import pandas as pd
+
 
 def run(df):
-    pca.run(df, )
-    pass
+    types = ['키', '몸무게']
+    man_pcaed_data = pca.run(df, '남', types)
+    woman_pcaed_data = pca.run(df, '여', types)
+    logistic.run_with_pca(man_pcaed_data, woman_pcaed_data, types)
+
+
+if __name__ == '__main__':
+    df = pd.read_csv(
+        './content/공군_신체정보_남녀혼합.csv', encoding='cp949')
+    run(df)
