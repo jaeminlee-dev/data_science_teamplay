@@ -25,7 +25,7 @@ def run_with_pca(man_pcaed_data, woman_pcaed_data, types):
     x = np.concatenate((man_pcaed_data, woman_pcaed_data))
     X = x.reshape(-1, 1)
     # 남자는 0, 여자는 1로 레이블링
-    y = y = np.concatenate(
+    y = np.concatenate(
         (np.zeros(man_pcaed_data.shape[0]), np.ones(woman_pcaed_data.shape[0])))
     clf = LogisticRegression(solver='lbfgs').fit(X, y)
     show(clf, title=f'{types} 로지스틱 회귀 분석 (PCA)')
@@ -33,7 +33,7 @@ def run_with_pca(man_pcaed_data, woman_pcaed_data, types):
 
 def show(clf, title='로지스틱 회귀 분석'):
     # TODO: 데이터의 형식에 따라 맞춤형으로 x값 설정
-    x = np.arange(-2000, 2000, 1)
+    x = np.arange(-100, 100, 1)
     y_male = clf.predict_proba(x.reshape(-1, 1))[:, 0]
     y_female = clf.predict_proba(x.reshape(-1, 1))[:, 1]
 
@@ -41,7 +41,7 @@ def show(clf, title='로지스틱 회귀 분석'):
     plt.figure(figsize=(10, 6))
     plt.plot(x, y_male * 100, label='남자일 확률', color='blue')
     plt.plot(x, y_female * 100, label='여자일 확률', color='red')
-    plt.title('로지스틱 회귀 분석')
+    plt.title(title)
     plt.legend()
     plt.grid(True)
     plt.show()
