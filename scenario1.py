@@ -3,7 +3,7 @@
 
 from matplotlib import pyplot as plt
 import logistic as logistic
-import naive as naive
+#import naive as naive
 import pca as pca
 import pandas as pd
 
