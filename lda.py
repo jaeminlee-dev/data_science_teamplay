@@ -12,8 +12,8 @@ def run(df, types=['키', '몸무게']):
     lda.fit(scaled, target)
     lda_data = lda.transform(scaled)
 
-    return lda_data
-    #show(lda_data, target)
+    show(lda_data, target)
+    return lda_data, target
 
 
 def show(lda_data, target):

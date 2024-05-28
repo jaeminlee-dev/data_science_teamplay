@@ -13,8 +13,18 @@ def run(df, types=['키', '몸무게']):
     가우시안.fit(X, y)
     show(가우시안, X, y)
 
+# target은 성별을 0, 1로 변환한 값으로 기존과 동일해서 한개만 받음
 
-def show(가우시안, X, y):
+
+def run_with_lda(lda_data1, lda_data2, target, types1, types2):
+    X = np.concatenate([lda_data1, lda_data2], axis=1)
+    y = target
+    가우시안 = GaussianNB()
+    가우시안.fit(X, y)
+    show(가우시안, X, y, x_label=f'{types1} LDA Component 1', y_label=f'{types2}LDA Component 2', title='Naïve Bayes LDA')
+
+
+def show(가우시안, X, y, x_label='키 (cm)', y_label='몸무게 (kg)', title='Naïve Bayes'):
     # 시각화
     rng = np.random.RandomState(0)
     Xnew = np.array([[rng.uniform(X[:, 0].min(), X[:, 0].max()),
@@ -31,9 +41,9 @@ def show(가우시안, X, y):
                 cmap='RdBu', alpha=0.1, label='생성된 데이터')
 
     # 라벨 세팅
-    plt.xlabel('키 (cm)')
-    plt.ylabel('몸무게 (kg)')
-    plt.title('가우시안 나이브 베이지스 분류')
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
     plt.legend()
     plt.show()
 

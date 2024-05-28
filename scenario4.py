@@ -11,8 +11,10 @@ def run(df):
     types1 = ['키', '몸무게']
     types2 = ['허리둘레(윗허리)', '머리둘레']
 
-    lda.run(df, types1)
-    lda.run(df, types2)
+    lda_data1, target1 = lda.run(df, types1)
+    lda_data2, target2 = lda.run(df, types2)
+
+    naive.run_with_lda(lda_data1, lda_data2, target1, types1, types2)
 
 
 if __name__ == '__main__':
