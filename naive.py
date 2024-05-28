@@ -6,9 +6,9 @@ import seaborn as sns
 sns.set()
 
 
-def run(df, sex='남', types=['키', '몸무게']):
+def run(df, types=['키', '몸무게']):
     X = df[types].values
-    y = df['성별'].apply(lambda x: 0 if x == sex else 1).values
+    y = df['성별'].apply(lambda x: 0 if x == '남' else 1).values
     가우시안 = GaussianNB()
     가우시안.fit(X, y)
     show(가우시안, X, y)
