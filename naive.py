@@ -11,7 +11,12 @@ def run(df, types=['키', '몸무게']):
     y = df['성별'].apply(lambda x: 0 if x == '남' else 1).values
     가우시안 = GaussianNB()
     가우시안.fit(X, y)
+    y_pred = 가우시안.predict(X)
+    accuracy = (y == y_pred).mean()
+    print(f'{types} 모델 정확도: {accuracy}')
     show(가우시안, X, y)
+    # 해당 모델 성능 측정
+
 
 # target은 성별을 0, 1로 변환한 값으로 기존과 동일해서 한개만 받음
 
@@ -21,6 +26,12 @@ def run_with_lda(lda_data1, lda_data2, target, types1, types2):
     y = target
     가우시안 = GaussianNB()
     가우시안.fit(X, y)
+
+    # 해당 모델 성능 측정
+    y_pred = 가우시안.predict(X)
+    accuracy = (y == y_pred).mean()
+    print(f'{types1}와 {types2} 모델 정확도: {accuracy}')
+
     show(가우시안, X, y, x_label=f'{types1} LDA Component 1', y_label=f'{
          types2}LDA Component 2', title='Naïve Bayes LDA')
 
