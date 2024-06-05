@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.metrics import accuracy_score
 sns.set()
 
 
@@ -14,12 +15,18 @@ def run(df, types=['키', '몸무게']):
     y_pred = 가우시안.predict(X)
     accuracy = (y == y_pred).mean()
     print(f'{types} 모델 정확도: {accuracy}')
-    show(가우시안, X, y)
+    #show(가우시안, X, y)
     # 해당 모델 성능 측정
 
 
 # target은 성별을 0, 1로 변환한 값으로 기존과 동일해서 한개만 받음
 
+def accuracy_train_test(x_train, x_test, y_train, y_test):
+    model = GaussianNB()
+    model.fit(x_train, y_train)
+    y_pred = model.predict(x_test)
+    
+    return accuracy_score(y_test, y_pred)
 
 def run_with_lda(lda_data1, lda_data2, target, types1, types2):
     X = np.concatenate([lda_data1, lda_data2], axis=1)
@@ -32,8 +39,7 @@ def run_with_lda(lda_data1, lda_data2, target, types1, types2):
     accuracy = (y == y_pred).mean()
     print(f'{types1}와 {types2} 모델 정확도: {accuracy}')
 
-    show(가우시안, X, y, x_label=f'{types1} LDA Component 1', y_label=f'{
-         types2}LDA Component 2', title='Naïve Bayes LDA')
+    show(가우시안, X, y, x_label=f'{types1} LDA Component 1', y_label=f'{types2}LDA Component 2', title='Naïve Bayes LDA')
 
 
 def show(가우시안, X, y, x_label='키 (cm)', y_label='몸무게 (kg)', title='Naïve Bayes'):
@@ -63,6 +69,6 @@ def show(가우시안, X, y, x_label='키 (cm)', y_label='몸무게 (kg)', title
 if __name__ == '__main__':
     plt.rc('font', family='AppleGothic')
     df = pd.read_csv(
-        './content/공군_신체정보_남녀혼합.csv', encoding='cp949')
+        'content\공군_신체정보_남녀혼합.csv', encoding='cp949')
     run(df)
     pass

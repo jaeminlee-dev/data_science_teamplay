@@ -2,18 +2,18 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from sklearn.model_selection import train_test_split
 
 def run(df, types=['키', '몸무게']):
-    scaled = StandardScaler().fit_transform(df[types])
-    target = df['성별'].replace({"남": 0, "여": 1}).values
-
+    target = df['성별'].map({"남": 0, "여": 1})
+    x_train, x_test, y_train, y_test = train_test_split(df[types], target, test_size=0.2, random_state=42)
+    
     lda = LinearDiscriminantAnalysis(n_components=1)
-    lda.fit(scaled, target)
-    lda_data = lda.transform(scaled)
+    x_train_lda = lda.fit_transform(x_train, y_train)
+    x_test_lda = lda.transform(x_test)
 
-    show(lda_data, target)
-    return lda_data, target
+    ## 각각 lda를 적용한 데이터셋이다
+    return x_train_lda, x_test_lda, y_train, y_test;
 
 
 def show(lda_data, target):
