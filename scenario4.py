@@ -7,7 +7,8 @@ import lda as lda
 import pandas as pd
 from itertools import combinations, chain
 
-accuracy_weight={}
+accuracy_weight_naive={}
+accuracy_weight_logistic={}
 
 def run(df):
     # 모든 경우의 수
@@ -26,46 +27,68 @@ def run(df):
     for idx, keys in enumerate(joinKeys):
         print(f'[#{idx}] {keys}')
 
-    result = []
+    result_naive = []
+    result_logistic = []
 
     print("학습을 시작합니다")
     for idx, keys in enumerate(joinKeys):
         print(f'(학습 시작) [#{idx}] {keys}')
         x_train, x_test, y_train, y_test = lda.run(df, keys)
+
+        ## Bayes
         accuracy = naive.accuracy_train_test(x_train, x_test, y_train, y_test)
 
         if(len(keys)==1):
-            accuracy_weight[keys[0]] = accuracy
+            accuracy_weight_naive[keys[0]] = accuracy
         
-        result.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight[x], reverse=True)})
+        result_naive.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight_naive[x], reverse=True)})
 
-        print(f'(학습 종료) [#{idx}] {keys} => 정확도: {accuracy}')
+        ## logistic
+        accuracy = logistic.accuracy_train_test(x_train, x_test, y_train, y_test)
 
-    print(f"# 총 결과 개수 : {len(result)} #")
+        if(len(keys)==1):
+            accuracy_weight_logistic[keys[0]] = accuracy
+        
+        result_logistic.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight_logistic[x], reverse=True)})
 
-    result.sort(key=lambda x: x['accuracy'], reverse=False)
+    print(f"# Bayes 총 결과 개수 : {len(result_naive)} #")
 
-    print("하위 결과 10위")
-    for rank, token in enumerate(result):
+    result_naive.sort(key=lambda x: x['accuracy'], reverse=False)
+
+    print(" Bayes 하위 결과 10위")
+    for rank, token in enumerate(result_naive):
         if rank>=10:
             break;
         print(f'#{rank+1}위 => {token}')
 
-    result.sort(key=lambda x: x['accuracy'], reverse=True)
+    result_naive.sort(key=lambda x: x['accuracy'], reverse=True)
 
-    print("상위 결과 10위")
-    for rank, token in enumerate(result):
+    print(" Bayes 상위 결과 10위")
+    for rank, token in enumerate(result_naive):
         if rank>=10:
             break;
         print(f'#{rank+1}위 => {token}')
-    # lda_data1, target1 = lda.run(df, types1)
-    # lda_data2, target2 = lda.run(df, types2)
 
-    # naive.run_with_lda(lda_data1, lda_data2, target1, types1, types2)
+    print(f"# Logistic 총 결과 개수 : {len(result_logistic)} #")
 
+    result_logistic.sort(key=lambda x: x['accuracy'], reverse=False)
+
+    print(" Logistic 하위 결과 10위")
+    for rank, token in enumerate(result_logistic):
+        if rank>=10:
+            break;
+        print(f'#{rank+1}위 => {token}')
+
+    result_logistic.sort(key=lambda x: x['accuracy'], reverse=True)
+
+    print(" Logistic 상위 결과 10위")
+    for rank, token in enumerate(result_logistic):
+        if rank>=10:
+            break;
+        print(f'#{rank+1}위 => {token}')
 
 if __name__ == '__main__':
     plt.rc('font', family='AppleGothic')
     df = pd.read_csv(
-        './content/공군_신체정보_남녀혼합.csv', encoding='cp949')
+        'content\공군_신체정보_남녀혼합.csv', encoding='cp949')
     run(df)

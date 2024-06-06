@@ -5,6 +5,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.linear_model import LogisticRegression
 
+def accuracy_train_test(x_train, x_test, y_train, y_test):
+    model = LogisticRegression()
+    model.fit(x_train, y_train)
+    y_pred = model.predict(x_test)
+    
+    return accuracy_score(y_test, y_pred)
 
 def run(df, type='몸무게'):
     남자 = df[df['성별'] == '남']
