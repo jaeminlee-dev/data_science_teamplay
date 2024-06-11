@@ -13,10 +13,8 @@ def run(df, types=['키', '몸무게']):
     가우시안 = GaussianNB()
     가우시안.fit(X, y)
     y_pred = 가우시안.predict(X)
-    accuracy = (y == y_pred).mean()
-    print(f'{types} 모델 정확도: {accuracy}')
-    #show(가우시안, X, y)
-    # 해당 모델 성능 측정
+
+    return accuracy_score(y, y_pred)
 
 
 # target은 성별을 0, 1로 변환한 값으로 기존과 동일해서 한개만 받음
