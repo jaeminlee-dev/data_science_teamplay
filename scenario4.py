@@ -13,12 +13,11 @@ accuracy_weight_logistic={}
 def run(df):
     # 모든 경우의 수
     types = ['키', '몸무게', '머리둘레', 
-             '목둘레', '화장', '젖가슴둘레',
-             '배꼽수준허리둘레','엉덩이둘레', '샅높이',
-             '희망치수신발', '윗가슴둘레(겨드랑이)', '허리둘레(윗허리)',
-             '어깨가쪽사이길이', '팔길이', '등길이',
-             '다리가쪽길이', '총장'
+             '목둘레', '희망치수신발',  '허리둘레(윗허리)',
+             '어깨가쪽사이길이'
              ]
+
+    #types = ['키', '몸무게', '희망치수신발']
 
     joinKeys = [list(arr) for arr in list(chain.from_iterable(combinations(types, size) for size in range(1, len(types) + 1)))]
 
@@ -41,7 +40,7 @@ def run(df):
         if(len(keys)==1):
             accuracy_weight_naive[keys[0]] = accuracy
         
-        result_naive.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight_naive[x], reverse=True)})
+        result_naive.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight_naive[x] if x in accuracy_weight_naive else idx, reverse=True)})
 
         ## logistic
         accuracy = logistic.accuracy_train_test(x_train, x_test, y_train, y_test)
@@ -49,7 +48,7 @@ def run(df):
         if(len(keys)==1):
             accuracy_weight_logistic[keys[0]] = accuracy
         
-        result_logistic.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight_logistic[x], reverse=True)})
+        result_logistic.append({'idx':idx, 'accuracy': accuracy, 'keys':sorted(keys, key=lambda x: accuracy_weight_logistic[x] if x in accuracy_weight_logistic else idx, reverse=True)})
 
     print(f"# Bayes 총 결과 개수 : {len(result_naive)} #")
 
@@ -87,8 +86,17 @@ def run(df):
             break;
         print(f'#{rank+1}위 => {token}')
 
+    print("Bayes 각 요소별 순위")
+    sorted_items = sorted(accuracy_weight_naive.items(), key=lambda item: item[1], reverse=True)
+    print({key: value for key, value in sorted_items});
+
+    # print("Logistic 각 요소별 순위")
+    # sorted_items = sorted(accuracy_weight_logistic.items(), key=lambda item: item[1], reverse=True)
+    # print({key: value for key, value in sorted_items});
+
 if __name__ == '__main__':
-    plt.rc('font', family='AppleGothic')
+    plt.rc('font', family='Malgun Gothic')
+    plt.rcParams['axes.unicode_minus']=False
     df = pd.read_csv(
         'content\공군_신체정보_남녀혼합.csv', encoding='cp949')
     run(df)
