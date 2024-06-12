@@ -1,0 +1,72 @@
+﻿정확도,신체 치수 조합,분류 기법
+0.9897,"희망치수신발, 총장, 윗가슴둘레(겨드랑이), 키, 몸무게, 목둘레, 젖가슴둘레, 배꼽수준허리둘레, 엉덩이둘레, 어깨가쪽사이길이, 팔길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Logistic Regression
+0.9845,"총장, 윗가슴둘레(겨드랑이), 키, 등길이, 목둘레, 배꼽수준허리둘레, 엉덩이둘레, 화장, 팔길이",LDA - Logistic Regression
+0.9845,"희망치수신발, 윗가슴둘레(겨드랑이), 키, 목둘레, 배꼽수준허리둘레, 엉덩이둘레, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Logistic Regression
+0.9845,"희망치수신발, 키, 몸무게, 목둘레, 젖가슴둘레, 배꼽수준허리둘레, 엉덩이둘레, 어깨가쪽사이길이, 팔길이, 다리가쪽길이",LDA - Logistic Regression
+0.9845,"희망치수신발, 윗가슴둘레(겨드랑이), 키, 몸무게, 목둘레, 배꼽수준허리둘레, 엉덩이둘레, 어깨가쪽사이길이, 팔길이, 다리가쪽길이",LDA - Logistic Regression
+0.9845,"키, 윗가슴둘레(겨드랑이), 목둘레, 배꼽수준허리둘레, 엉덩이둘레, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 윗가슴둘레(겨드랑이), 목둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 몸무게, 목둘레, 젖가슴둘레, 배꼽수준허리둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 몸무게, 윗가슴둘레(겨드랑이), 목둘레, 배꼽수준허리둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 윗가슴둘레(겨드랑이), 목둘레, 젖가슴둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 몸무게, 윗가슴둘레(겨드랑이), 목둘레, 젖가슴둘레, 배꼽수준허리둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 몸무게, 목둘레, 젖가슴둘레, 배꼽수준허리둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 몸무게, 윗가슴둘레(겨드랑이), 목둘레, 배꼽수준허리둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"총장, 키, 윗가슴둘레(겨드랑이), 목둘레, 젖가슴둘레, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.9845,"키, 몸무게, 목둘레, 젖가슴둘레, 배꼽수준허리둘레, 화장, 엉덩이둘레, 팔길이, 희망치수신발, 어깨가쪽사이길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.958763,"키, 몸무게, 허리둘레 (윗허리), 어깨가쪽사이길이, 머리둘레, 목둘레, 희망치수신발",PCA - Logistic Regression
+0.953608,"키, 몸무게, 허리둘레 (윗허리), 머리둘레 목둘레, 희망치수신발",PCA - Logistic Regression
+0.953608,"키, 몸무게, 허리둘레 (윗허리), 머리둘레 목둘레, 희망치수신발",PCA - Logistic Regression
+0.953608,희망치수신발,PCA - Logistic Regression
+0.953608,"허리둘레 (윗허리), 몸무게, 어깨가쪽사이길이, 희망치수신발",PCA - Logistic Regression
+0.948454,"허리둘레 (윗허리), 키, 어깨가쪽사이길이, 희망치수신발",PCA - Logistic Regression
+0.948454,"키, 허리둘레 (윗허리), 희망치수신발",PCA - Logistic Regression
+0.948454,"몸무게, 허리둘레(윗허리), 희망치수신발",PCA - Logistic Regression
+0.937,"키, 등길이, 머리둘레, 젖가슴둘레",Naïve Bayes Classification
+0.936,"키, 등길이, 머리둘레, 윗가슴둘레(겨드랑이)",Naïve Bayes Classification
+0.935,"키, 등길이, 머리둘레, 희망치수신발",Naïve Bayes Classification
+0.93299,"키, 몸무게, 머리둘레, 목둘레, 희망치수신발",PCA - Logistic Regression
+0.93299,희망치수신발,PCA - Logistic Regression
+0.93299,"키, 몸무게, 희망치수신발",PCA - Logistic Regression
+0.9329,"키, 등길이, 머리둘레, 윗가슴둘레(겨드랑이), 젖가슴둘레, 희망치수신발, 다리가쪽길이",Naïve Bayes Classification
+0.9319,"키, 등길이, 머리둘레, 윗가슴둘레(겨드랑이), 희망치수신발",Naïve Bayes Classification
+0.9319,"키, 등길이, 머리둘레, 젖가슴둘레, 희망치수신발, 다리가쪽길이",Naïve Bayes Classification
+0.9309,"키, 등길이, 머리둘레, 윗가슴둘레(겨드랑이), 젖가슴둘레",Naïve Bayes Classification
+0.9278,"키, 등길이, 머리둘레",Naïve Bayes Classification
+0.9267,"키, 등길이, 젖가슴둘레, 희망치수신발, 다리가쪽길이",Naïve Bayes Classification
+0.9257,"총장, 키, 등길이, 머리둘레, 젖가슴둘레",Naïve Bayes Classification
+0.865979,"키, 몸무게",PCA - Logistic Regression
+0.845361,"머리둘레, 목둘레",PCA - Logistic Regression
+0.840206,키,PCA - Logistic Regression
+0.6907,"팔길이, 다리가쪽길이",LDA - Logistic Regression
+0.6907,"엉덩이둘레, 팔길이, 허리둘레(윗허리)",LDA - Logistic Regression
+0.6907,"팔길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Logistic Regression
+0.6804,"엉덩이둘레, 허리둘레(윗허리)",LDA - Logistic Regression
+0.6804,"엉덩이둘레, 다리가쪽길이",LDA - Logistic Regression
+0.6804,"엉덩이둘레, 허리둘레(윗허리), 다리가쪽길이",LDA - Logistic Regression
+0.6753,"엉덩이둘레, 팔길이, 다리가쪽길이",LDA - Logistic Regression
+0.6574,"샅높이, 허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.6574,허리둘레(윗허리),Naïve Bayes Classification
+0.6563,"배꼽수준허리둘레, 엉덩이둘레, 허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.654639,"키, 몸무게, 허리둘레 (윗허리), 머리둘레",PCA - Logistic Regression
+0.6546,허리둘레(윗허리),LDA - Logistic Regression
+0.6546,다리가쪽길이,LDA - Logistic Regression
+0.6512,"화장, 허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.6512,"배꼽수준허리둘레, 허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.649485,"머리둘레, 허리둘레 (윗허리)",PCA - Logistic Regression
+0.6481,"엉덩이둘레, 다리가쪽길이",Naïve Bayes Classification
+0.6481,"팔길이, 허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.6471,다리가쪽길이,Naïve Bayes Classification
+0.6443,"허리둘레(윗허리), 다리가쪽길이",LDA - Logistic Regression
+0.6392,"엉덩이둘레, 팔길이, 다리가쪽길이",LDA - Naïve Bayes Classification
+0.6378,"허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.6378,"엉덩이둘레, 허리둘레(윗허리), 다리가쪽길이",Naïve Bayes Classification
+0.634,다리가쪽길이,LDA - Naïve Bayes Classification
+0.634,"엉덩이둘레, 팔길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.6237,"엉덩이둘레, 다리가쪽길이",LDA - Naïve Bayes Classification
+0.6134,"엉덩이둘레, 허리둘레(윗허리)",LDA - Naïve Bayes Classification
+0.6082,"허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.6031,"엉덩이둘레, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
+0.5464,"팔길이, 허리둘레(윗허리)",LDA - Naïve Bayes Classification
+0.5361,"팔길이, 다리가쪽길이",LDA - Naïve Bayes Classification
+0.5206,"팔길이, 허리둘레(윗허리), 다리가쪽길이",LDA - Naïve Bayes Classification
